@@ -1,0 +1,67 @@
+@startuml "Casos de Uso"
+
+skinparam Linetype polyline
+
+left to right direction
+
+actor "Usuario" as user
+actor "Player" as player
+actor "Master" as master
+
+usecase "Gerar personagem de nivel 1" as gerarPersonagemNivel1
+usecase "Subir de Nivel" as subirDeNivel
+usecase "Gerenciar inventário" as gerenciasInventário
+usecase "Convidar para mesa com QR code" as ConvidarParaMesaQRCode
+usecase "Criar Mesa" as criarMesa
+usecase "Ser Mestre da Mesa" as serMestreDaMesa
+usecase "Alterar Bioma da sessão" as alterarBiomaDaSessao
+usecase "Iniciar sessão" as iniciarSessao
+usecase "Finalizar sessão" as finalizarSessao
+usecase "Descrever contexto" as descreverContexto
+usecase "Gerar Encontros" as gerarEncontros
+usecase "Rolar Dados" as rolarDados
+usecase "Login e Cadastro" as loginCadastro
+usecase "Exclusão de conta" as excluirConta
+usecase "Gerenciamento de Perfil" as gerenciarPerfil
+usecase "Arquivar Mesa" as arquivarMesa
+usecase "Excluir Mesa" as excluirMesa
+usecase "VerHistorico de Secções" as historicoDeSessoes
+
+
+user <|- master
+user <|- player
+
+'Casos Genericos
+user --> gerenciarPerfil
+user --> loginCadastro
+user --> excluirConta
+user --> rolarDados
+user --> historicoDeSessoes
+
+'Casos de player
+player --> gerarPersonagemNivel1
+player --> subirDeNivel
+player --> gerenciasInventário
+
+'Casos de Mestre
+
+user --> criarMesa
+user --> serMestreDaMesa
+user --> ConvidarParaMesaQRCode
+
+master --> alterarBiomaDaSessao
+master --> iniciarSessao
+master --> finalizarSessao
+master --> descreverContexto
+master --> gerarEncontros
+master --> arquivarMesa
+master --> excluirMesa
+
+' serMestreDaMesa <.. alterarBiomaDaSessao: <<include>> 
+' serMestreDaMesa <.. iniciarSessao: <<include>>
+' serMestreDaMesa <.. finalizarSessao: <<include>>
+' serMestreDaMesa <.. descreverContexto: <<include>>
+' serMestreDaMesa <.. gerarEncontros: <<include>>
+' serMestreDaMesa <.. arquivarMesa: <<include>>
+' serMestreDaMesa <.. excluirMesa: <<include>>
+@enduml

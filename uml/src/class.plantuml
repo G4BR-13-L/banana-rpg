@@ -1,0 +1,51 @@
+@startuml Classe
+
+
+class User {
+    nome: string
+    email: string
+    profilePhoto: string
+}
+
+class Master{
+
+}
+
+class Player{
+
+}
+
+class Table{
+
+}
+
+class Session{
+
+}
+
+class Character{
+
+}
+
+class Enemy{
+
+}
+
+class Biome{
+
+}
+
+User <|-- Master
+User <|-- Player
+
+Character <|-- Enemy
+
+Master o-- Table
+Table *-- Session
+Table "1..*" *-- "0..*" Character
+Player "0..*" -- "1" Character
+
+Session o-- Biome
+
+
+@enduml
